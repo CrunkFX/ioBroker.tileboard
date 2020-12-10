@@ -82,7 +82,7 @@
 
         function getDefaultConfig(uploadDefault, onChange) {
             $.get('config.js', function (data) {
-                wrapperConfig = data.toString();
+                wrapperConfig = data;
                 //socket.emit('writeFile', 'tileboard.0', 'config.js', wrapperConfig);
 
                 onChange();
@@ -94,7 +94,7 @@
             if (!editorConfig) {
                 setTimeout(function () {
                     if ($('#wrapperConfig').is(':visible')) {
-                        editorConfig = ace.edit('#wrapperConfig');
+                        editorConfig = ace.edit('wrapperConfig');
                         editorConfig.getSession().setMode('ace/mode/javascript');
                         editorConfig.$blockScrolling = true;
                         editorConfig.setValue(wrapperConfig);
@@ -112,7 +112,7 @@
             if (!editorCSS) {
                 setTimeout(function () {
                     if ($('#wrapperCSS').is(':visible')) {
-                        editorCSS = ace.edit('#wrapperCSS');
+                        editorCSS = ace.edit('wrapperCSS');
                         editorCSS.getSession().setMode('ace/mode/javascript');
                         editorCSS.$blockScrolling = true;
                         editorCSS.setValue(wrapperCSS || '');
@@ -131,7 +131,7 @@
                 if (!data) {
                     getDefaultConfig(err === ERROR_NOT_EXISTS, onChange);
                 } else {
-                    wrapperConfig = data.toString();
+                    wrapperConfig = data;
                     initEditorConfig(onChange);
                 }
             });
