@@ -83,7 +83,7 @@
         function getDefaultConfig(uploadDefault, onChange) {
             $.get('config.js', function (data) {
                 wrapperConfig = data.toString();
-                socket.emit('writeFile', 'tileboard.0', 'config.js', wrapperConfig);
+                //socket.emit('writeFile', 'tileboard.0', 'config.js', wrapperConfig);
 
                 onChange();
                 initEditorConfig(onChange);
